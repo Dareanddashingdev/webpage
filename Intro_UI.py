@@ -18,7 +18,7 @@ def get_base64(file_path):
 base_dir = os.path.dirname(os.path.abspath(__file__))
 gif_path = os.path.join(base_dir, "UI_background.gif")
 
-# --- Apply Background GIF ---
+# --- Apply Background GIF and Set Text Color to Black ---
 base64_gif = get_base64(gif_path)
 gif_css = f"""
 <style>
@@ -29,7 +29,9 @@ gif_css = f"""
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    color: black;
 }}
+
 .stApp::before {{
     content: "";
     position: absolute;
@@ -40,12 +42,15 @@ gif_css = f"""
     background-color: rgba(255, 255, 255, 0.6);
     z-index: 0;
 }}
+
 .stApp > * {{
     position: relative;
     z-index: 1;
 }}
-h1, h2, h3, h4, h5, h6, p, li, label {{
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+
+h1, h2, h3, h4, h5, h6, p, li, label, span, a {{
+    color: black !important;
+    text-shadow: none !important;
 }}
 </style>
 """
@@ -187,5 +192,6 @@ for col, (img, name, link) in zip(cols, team):
 
 st.divider()
 st.markdown("🔗 **GitHub Link:** [CSL2050 Project Repository](https://github.com/navyasripenmetsa/CSL2050_PRML_Major_Course_Project)")
+
 
 
